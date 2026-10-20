@@ -1,0 +1,511 @@
+:root {
+    --wa-green-dark: #075e54;
+    --wa-green: #0a7a63;
+    --wa-bg: #ffffff;
+    --wa-hover: #f5f6f6;
+    --wa-border: #e9edef;
+    --wa-text-primary: #111b21;
+    --wa-text-secondary: #5b6b74;
+    --wa-badge: #0e7a5f;
+    --wa-font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--wa-font);
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+img, svg, input, button {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.pantalla-chat {
+    background-color: #efeae2;
+    padding: 20px;
+    min-height: 0;
+}
+
+.modal-container{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.494);
+    z-index: 10;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 550px;
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+.error-text{
+    color: #b3261e;
+
+}
+
+.contact-image-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 49px;
+    height: 49px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.contact-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-screen {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.contenido-principal {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    background-color: #f0f2f5;
+    color: var(--wa-text-secondary);
+    overflow: hidden;
+}
+
+.home-empty {
+    max-width: 420px;
+    font-size: 15px;
+}
+
+.contact-detail {
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0;
+    text-align: left;
+    color: var(--wa-text-primary);
+}
+
+.contact-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    background-color: var(--wa-bg);
+    border-bottom: 1px solid var(--wa-border);
+}
+
+.contact-detail-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.contact-detail-identity--clickable {
+    padding: 4px 6px;
+    margin: -4px -6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.contact-detail-identity--clickable:hover {
+    background-color: var(--wa-hover);
+}
+
+.contact-detail-identity--clickable:focus-visible {
+    outline: 2px solid var(--wa-green);
+    outline-offset: 2px;
+}
+
+.contact-detail-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.contact-detail-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.contact-detail-header h1 {
+    min-width: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--wa-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contact-detail-status {
+    font-size: 12.5px;
+    color: var(--wa-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contact-detail-status--online {
+    color: var(--wa-green);
+    font-weight: 500;
+}
+
+.contact-detail-back {
+    display: none;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: var(--wa-green);
+}
+
+.contact-detail-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.contact-detail-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--wa-text-secondary);
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.contact-detail-icon-btn:hover {
+    background-color: var(--wa-hover);
+    color: var(--wa-text-primary);
+}
+
+.contact-detail-icon-btn:focus-visible {
+    outline: 2px solid var(--wa-green);
+    outline-offset: 2px;
+}
+
+.contact-detail-body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.contact-detail-chat {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-detail-messages {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.login-screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: #f0f2f5;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 360px;
+    padding: 28px;
+    background-color: var(--wa-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(11, 20, 26, 0.12);
+}
+
+.login-form input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--wa-border);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.login-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--wa-green);
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.not-found-screen {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+    text-align: center;
+}
+
+/* ============================================================
+   Responsive: de 320px a 2000px
+   ============================================================ */
+
+/* Pantallas chicas: se muestra una sola vista (lista o conversación) */
+@media (max-width: 768px) {
+    .home-screen--list .contenido-principal {
+        display: none;
+    }
+
+    .home-screen--list .sidebar {
+        width: 100%;
+        border-right: none;
+    }
+
+    .home-screen--detail .sidebar {
+        display: none;
+    }
+
+    .home-screen--detail .contenido-principal {
+        width: 100%;
+    }
+
+    .contact-detail-back {
+        display: inline-flex;
+    }
+}
+
+/* Escritorio/tablet: sin conversación abierta, la lista ocupa más espacio
+   y se mantiene el panel derecho con el mensaje de ayuda */
+@media (min-width: 769px) {
+    .home-screen--list .sidebar {
+        width: 45%;
+        min-width: 340px;
+        max-width: 640px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .contenido-principal:not(.contact-detail) {
+        padding: 16px;
+    }
+
+    .contact-image-container {
+        width: 42px;
+        height: 42px;
+    }
+
+    .contact-detail-header {
+        padding: 8px 14px;
+        gap: 8px;
+    }
+
+    .contact-detail-header h1 {
+        font-size: 15px;
+    }
+
+    .contact-detail-avatar {
+        width: 36px;
+        height: 36px;
+    }
+
+    .contact-detail-status {
+        font-size: 12px;
+    }
+
+    .contact-detail-actions {
+        gap: 6px;
+    }
+
+    .contact-detail-icon-btn {
+        width: 34px;
+        height: 34px;
+    }
+
+    .pantalla-chat {
+        padding: 12px;
+    }
+
+    .login-form {
+        padding: 20px 16px;
+    }
+}
+
+/* Celulares muy chicos (320px) */
+@media (max-width: 360px) {
+    .contact-image-container {
+        width: 38px;
+        height: 38px;
+    }
+
+    .home-empty {
+        font-size: 14px;
+    }
+}
+
+/* ============================================================
+   Tema oscuro (se activa con html[data-theme="dark"])
+   ============================================================ */
+:root[data-theme="dark"] {
+    --wa-green-dark: rgb(16, 62, 44);
+    --wa-green: rgb(16, 62, 44);
+    --wa-bg: rgb(22, 23, 23);
+    --wa-hover: #2a2b2b;
+    --wa-border: #313335;
+    --wa-text-primary: #e9edef;
+    --wa-text-secondary: #8696a0;
+    --wa-badge: rgb(16, 62, 44);
+}
+
+/* El blanco pasa a rgb(22,23,23) */
+[data-theme="dark"] body {
+    background-color: rgb(22, 23, 23);
+    color: var(--wa-text-primary);
+}
+
+[data-theme="dark"] .contenido-principal,
+[data-theme="dark"] .login-screen,
+[data-theme="dark"] .not-found-screen {
+    background-color: rgb(22, 23, 23);
+}
+
+/* El fondo del chat un poco más oscuro, para distinguir las burbujas */
+[data-theme="dark"] .pantalla-chat {
+    background-color: #0b141a;
+}
+
+[data-theme="dark"] .login-form,
+[data-theme="dark"] .sidebar-search {
+    background-color: rgb(22, 23, 23);
+}
+
+[data-theme="dark"] .login-form input {
+    color: var(--wa-text-primary);
+}
+
+[data-theme="dark"] .sidebar-search input::placeholder {
+    color: #8696a0;
+}
+
+/* Burbujas de mensajes */
+[data-theme="dark"] .mensaje-propio .burbuja-mensaje {
+    background-color: rgb(16, 62, 44);
+    color: #e9edef;
+}
+
+[data-theme="dark"] .mensaje-recibido .burbuja-mensaje {
+    background-color: rgb(22, 23, 23);
+    color: #e9edef;
+}
+
+[data-theme="dark"] .hora-mensaje {
+    color: #a5b7bf;
+}
+
+[data-theme="dark"] .autor-mensaje {
+    color: #ffffff;
+}
+
+/* Acentos verdes legibles sobre fondo oscuro */
+[data-theme="dark"] .contact-detail-status--online,
+[data-theme="dark"] .contact-detail-back,
+[data-theme="dark"] .message-search-result-author {
+    color: #00a884;
+}
+
+[data-theme="dark"] .message-input-send:hover:not(:disabled) {
+    background-color: #0a7a63;
+}
+
+/* Palomitas y errores legibles sobre fondos oscuros */
+[data-theme="dark"] .doble-check.leido {
+    color: #53bdeb;
+}
+
+[data-theme="dark"] .doble-check.enviado {
+    color: #a5b7bf;
+}
+
+[data-theme="dark"] .error-text {
+    color: #ff8a80;
+}
+
+/* Marca de coincidencia y resaltado de la búsqueda */
+[data-theme="dark"] .contenedor-mensaje.mensaje-coincide .burbuja-mensaje {
+    box-shadow: 0 1px 0.5px rgba(11, 20, 26, 0.4), 0 0 0 2px rgba(0, 168, 132, 0.8);
+}
+
+[data-theme="dark"] .contenedor-mensaje.mensaje-resaltado .burbuja-mensaje::after {
+    background-color: #00a884;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .sidebar-contacts::-webkit-scrollbar-thumb {
+    background-color: #3a3b3b;
+}
